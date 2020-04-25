@@ -47,7 +47,8 @@ public class CountryDao extends JdbcDaoSupport {
 	}
 
 	public void updateCountryName(String codeName, String newCountryName) {
-		// TODO: implement it
+		getJdbcTemplate().execute(
+				UPDATE_COUNTRY_NAME_SQL_1 + newCountryName + "'" + UPDATE_COUNTRY_NAME_SQL_2 + codeName + "'");
 	}
 
 	public void loadCountries() {

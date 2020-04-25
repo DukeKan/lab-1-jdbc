@@ -31,8 +31,10 @@ public class CountryDao extends JdbcDaoSupport {
 	private static final CountryRowMapper COUNTRY_ROW_MAPPER = new CountryRowMapper();
 
 	public List<Country> getCountryList() {
-		// TODO: implement it
-		return null;
+		JdbcTemplate jdbcTemplate = getJdbcTemplate();
+
+		assert jdbcTemplate != null;
+		return jdbcTemplate.query(GET_ALL_COUNTRIES_SQL, COUNTRY_ROW_MAPPER);
 	}
 
 	public List<Country> getCountryListStartWith(String name) {
